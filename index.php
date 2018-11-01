@@ -29,17 +29,17 @@ and open the template in the editor.
         <script>
             $(document).ready(function () {
                 $("#btn").click(function () {
+                    var nom_user ="roger";
                     // Utilisons $.ajax pour créer une instance de XmlHttpRequest
                     $.ajax({
                         url: './php/com.php', // La ressource ciblée
                         type: 'GET', // Le type de la requête HTTP.
                         dataType: 'html', // Le type de données à recevoir, ici, du HTML.
-                        data: {
-                            utilisateur: <?php echo $nom_user ?>
-                        },
+                        data: 
+                            'utilisateur=' + nom_user // Avec ceci, du côté serveur,$_GET['utilisateur']contiendra la valeur de la variable nom_user. 
+                        ,
                         success: function (code_html, statut) { // code_html contient le HTML renvoyé
-                            $(code_html).appendTo("#p");
-
+                            $(code_html).appendTo("#p");                         
                         },
                         error: function (resultat, statut, erreur) {
 
