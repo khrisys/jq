@@ -14,7 +14,7 @@ and open the template in the editor.
         </style>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
                 <!--<script src="/jquery/js/jquery.js"></script>-->
-        <script src="/jquery/css/jquery-ui.js"></script>
+        <script src="./jquery/css/jquery-ui.js"></script>
         <link rel="stylesheet" src = "/jquery/css/jquery-ui.css">
     </head>
     <body>
@@ -29,15 +29,43 @@ and open the template in the editor.
         <script>
             $(document).ready(function () {
                 $("#btn").click(function () {
-                    var nom_user ="roger";
+                    var nom_user ="GET roger";
+                    var post_user = "POST nab";
                     // Utilisons $.ajax pour créer une instance de XmlHttpRequest
                     $.ajax({
                         url: './php/com.php', // La ressource ciblée
                         type: 'GET', // Le type de la requête HTTP.
                         dataType: 'html', // Le type de données à recevoir, ici, du HTML.
                         data: 
-                            'utilisateur=' + nom_user // Avec ceci, du côté serveur,$_GET['utilisateur']contiendra la valeur de la variable nom_user. 
+                            'utilisateur=' + nom_user // Avec ceci, du côté serveur,$_GET['utilisateur']contiendra la valeur de la variable nom_user.
+                            
                         ,
+//TRAITER LE RETOUR DE LA FONCTION
+//L'appel AJAX a réussi :success
+//L'appel AJAX n'a pas réussi :error
+//complete / va s'exécuter une fois l'appel AJAX effectué.
+                        success: function (code_html, statut) { // code_html contient le HTML renvoyé
+                            $(code_html).appendTo("#p");                         
+                        },
+                        error: function (resultat, statut, erreur) {
+
+                        },
+                        complete: function (resultat, statut) {
+
+                        }
+                    });
+                    
+                    $.ajax({
+                        url: './php/com.php', // La ressource ciblée
+                        type: 'POST', // Le type de la requête HTTP.
+                        dataType: 'html', // Le type de données à recevoir, ici, du HTML.
+                        data: 
+                            'post_user=' + post_user // Avec ceci, du côté serveur,$_GET['utilisateur']contiendra la valeur de la variable nom_user. 
+                        ,
+//TRAITER LE RETOUR DE LA FONCTION
+//L'appel AJAX a réussi :success
+//L'appel AJAX n'a pas réussi :error
+//complete / va s'exécuter une fois l'appel AJAX effectué.
                         success: function (code_html, statut) { // code_html contient le HTML renvoyé
                             $(code_html).appendTo("#p");                         
                         },

@@ -16,7 +16,7 @@ and open the template in the editor.
         </style>
         <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
                 <!--<script src="/jquery/js/jquery.js"></script>-->
-        <script src="/jquery/css/jquery-ui.js"></script>
+        <script src="./jquery/css/jquery-ui.js"></script>
         <link rel="stylesheet" src = "/jquery/css/jquery-ui.css">
     </head>
     <body>
